@@ -5,7 +5,7 @@ Analyzes the FULL video including audio/speech against Meta Andromeda criteria.
 No frame extraction needed — Gemini reads the entire video natively.
 """
 import os, json, tempfile, logging, re, time
-from flask import Flask, request, jsonify, render_template_string
+from flask import Flask, request, jsonify, Response
 import google.generativeai as genai
 
 logging.basicConfig(format="%(asctime)s %(levelname)s %(message)s", level=logging.INFO)
@@ -181,7 +181,7 @@ def analyze_with_gemini(video_path: str, mime_type: str) -> dict:
 
 @app.route("/")
 def index():
-    return render_template_string(INDEX_HTML)
+    return Response(INDEX_HTML, mimetype="text/html")
 
 
 @app.route("/analyze", methods=["POST"])
