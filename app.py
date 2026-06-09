@@ -156,7 +156,7 @@ def analyze_with_gemini(video_path: str, mime_type: str) -> dict:
         raise ValueError("Gemini failed to process the video. Check format.")
 
     log.info("Video ready. Running analysis...")
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.0-flash")
     response = model.generate_content(
         [video_file, ANALYSIS_PROMPT],
         generation_config=genai.GenerationConfig(
